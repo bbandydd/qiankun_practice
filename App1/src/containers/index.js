@@ -30,6 +30,7 @@ const Main = () => {
           break;
         case 'CALCULATE':
           setChildData(receiveData.data);
+          targetWindow.close();
           break;
         default:
           break;
