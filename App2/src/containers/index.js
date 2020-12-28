@@ -39,8 +39,8 @@ const Main = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <p>APP2</p>
-      <p>Data from Parent</p>
+      <p>eMDM</p>
+      <p>Data from 修模出圖系統</p>
       <p>{JSON.stringify(parentData)}</p>
       <button onClick={handleCalculate}>取得價格</button>
     </div>
