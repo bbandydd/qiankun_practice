@@ -8,9 +8,12 @@ const Main = () => {
 
   const handleCalculate = () => {
     const payload = {
-      price: 999,
-      jsonContent: {name: 'Part1'},
-      time: new Date().getTime(),
+      type: 'CALCULATE',
+      data: {
+        price: 999,
+        jsonContent: {name: 'Part1'},
+        time: new Date().getTime(),
+      },
     };
 
     window.opener.postMessage(JSON.stringify(payload), parentUrl);
@@ -25,7 +28,7 @@ const Main = () => {
   };
 
   useEffect(() => {
-    // getInitialData();
+    getInitialData();
 
     window.addEventListener('message', function(event) {
       if (event.origin === parentUrl) {
