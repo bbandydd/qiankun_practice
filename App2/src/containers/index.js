@@ -7,24 +7,28 @@ const Main = () => {
   const [parentData, setParentData] = useState({});
 
   const handleCalculate = () => {
-    const payload = {
-      type: 'CALCULATE',
-      data: {
-        price: 999,
-        jsonContent: {name: 'Part1'},
-        time: new Date().getTime(),
-      },
-    };
+    if (window.opener) {
+      const payload = {
+        type: 'CALCULATE',
+        data: {
+          price: 999,
+          jsonContent: {name: 'Part1'},
+          time: new Date().getTime(),
+        },
+      };
 
-    window.opener.postMessage(JSON.stringify(payload), parentUrl);
+      window.opener.postMessage(JSON.stringify(payload), parentUrl);
+    }
   };
 
   const getInitialData = () => {
-    const payload = {
-      type: 'GET_INITIAL',
-    };
+    if (window.opener) {
+      const payload = {
+        type: 'GET_INITIAL',
+      };
 
-    window.opener.postMessage(JSON.stringify(payload), parentUrl);
+      window.opener.postMessage(JSON.stringify(payload), parentUrl);
+    }
   };
 
   useEffect(() => {

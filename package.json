@@ -1,0 +1,20 @@
+{
+  "name": "qiankun_practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm-run-all --serial install:*",
+    "install:app1": "cd App1 && npm i",
+    "install:app2": "cd App2 && npm i",
+    "start": "npm-run-all --parallel start:*",
+    "start:app1": "cd App1 && npm start",
+    "start:app2": "cd App2 && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}

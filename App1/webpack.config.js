@@ -82,6 +82,7 @@ module.exports = {
   ],
   devServer: {
     compress: true,
+    port: 8081,
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
 };

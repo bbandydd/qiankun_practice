@@ -1,7 +1,14 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
+const packageName = require('./package.json').name;
+
 module.exports = {
+  output: {
+    library: `${packageName}-[name]`,
+    libraryTarget: 'umd',
+    jsonpFunction: `webpackJsonp_${packageName}`,
+  },
   module: {
     rules: [
       {
@@ -75,7 +82,7 @@ module.exports = {
   ],
   devServer: {
     compress: true,
-    port: 8081,
+    port: 8082,
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
 };
