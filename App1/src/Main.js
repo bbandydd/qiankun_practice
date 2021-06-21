@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
-
-const childUrl = 'http://localhost:8082';
-
 const Main = () => {
   const [targetWindow, setTargetWindow] = useState();
   const [childData, setChildData] = useState({});
 
   const handleEvaluate = () => {
+    let childUrl = 'http://localhost:8082';
+
+    if(window.__POWERED_BY_QIANKUN__){
+      childUrl = "http://localhost:8080/app2";
+    }
+
     const newWindow = window.open(childUrl, 'Calculate', 'width=1000,height=800');
     setTargetWindow(newWindow);
   };
 
   const receiveMessage = (event) => {
     const { origin, data } = event;
+    let childOrigin = 'http://localhost:8082';
 
-    if (origin === childUrl) {
+    if(window.__POWERED_BY_QIANKUN__){
+      childOrigin = location.origin;
+    }
+
+    if (origin === childOrigin) {
       const receiveData = JSON.parse(data);
 
       switch(receiveData?.type) {
@@ -26,7 +34,7 @@ const Main = () => {
             partNumber: '083.00246.0070',
             projectCode: '4PD0HC010001',
           };
-          targetWindow.postMessage(JSON.stringify(payload), childUrl);
+          targetWindow.postMessage(JSON.stringify(payload), childOrigin);
           break;
         case 'CALCULATE':
           setChildData(receiveData.data);

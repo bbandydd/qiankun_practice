@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 
-const parentUrl = 'http://localhost:8081';
+let parentUrl = 'http://localhost:8081';
+
+if(window.__POWERED_BY_QIANKUN__){
+  parentUrl = location.origin;
+}
 
 const Main = () => {
   const [parentData, setParentData] = useState({});
