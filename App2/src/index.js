@@ -1,9 +1,9 @@
 import React from 'react';
-import {render} from 'react-dom';
-import Main from './containers';
+import ReactDOM from 'react-dom';
+import Main from './Main';
 
 const doRender = () => {
-  render(<Main />, document.getElementById('app'));
+  ReactDOM.render(<Main />, document.getElementById('app'));
 };
 
 if(!window.__POWERED_BY_QIANKUN__){

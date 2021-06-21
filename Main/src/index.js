@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import { registerMicroApps, start, setDefaultMountApp } from 'qiankun';
 import microApps from './micro-app';
-import Main from './containers';
+import Main from './main';
 
 registerMicroApps(microApps, {
   beforeLoad: app => {
