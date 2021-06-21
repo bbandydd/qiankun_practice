@@ -4,9 +4,11 @@ import microApps from './micro-app';
 import * as Style from './Style';
 
 const Main = () => {
+  const [current, setCurrent] = useState('/app1');
 
   const goto = (item) => {
     history.pushState(null, item.activeRule, item.activeRule);
+    setCurrent(item.activeRule);
   }
 
   return (
@@ -16,7 +18,7 @@ const Main = () => {
         <Style.SubApps>
           {
             microApps.map((app) => (
-              <li onClick={() => goto(app)}>
+              <li onClick={() => goto(app)} className={`${current === app.activeRule ? 'active' : ''}`}>
                 {app.name}
               </li>
             ))
