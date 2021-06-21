@@ -29,10 +29,10 @@ const Main = () => {
       switch(receiveData?.type) {
         case 'GET_INITIAL':
           const payload = {
-            emdmId: 'emdm_0c5d4af5-baf5-43e9-b507-acd83c2d6a5a',
-            partName: 'LED WHITE GW CSSRM2.PM-N4N6-XX52-1',
-            partNumber: '083.00246.0070',
-            projectCode: '4PD0HC010001',
+            id: '0c5d4af5-baf5-43e9-b507-acd83c2d6a5a',
+            name: 'LED WHITE',
+            pn: 'aaa.123.456',
+            pcode: '4XX2XX010001',
           };
           targetWindow.postMessage(JSON.stringify(payload), childOrigin);
           break;
@@ -56,10 +56,10 @@ const Main = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <p>修模出圖系統</p>
-      <p>Data from eMDM</p>
+      <p>App1</p>
+      <p>Data from App2</p>
       <p>{JSON.stringify(childData)}</p>
-      <button onClick={handleEvaluate}>估價</button>
+      <button onClick={handleEvaluate}>Calculate</button>
     </div>
   );
 };

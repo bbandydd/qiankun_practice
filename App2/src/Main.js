@@ -47,10 +47,10 @@ const Main = () => {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <p>eMDM</p>
-      <p>Data from 修模出圖系統</p>
+      <p>App2</p>
+      <p>Data from App1</p>
       <p>{JSON.stringify(parentData)}</p>
-      <button onClick={handleCalculate}>取得價格</button>
+      <button onClick={handleCalculate}>get Data</button>
     </div>
   );
 };
