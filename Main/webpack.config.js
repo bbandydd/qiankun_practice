@@ -82,7 +82,7 @@ module.exports = {
   ],
   devServer: {
     compress: true,
-    port: 8082,
+    port: 8080,
     headers: { 'Access-Control-Allow-Origin': '*' },
     historyApiFallback: true
   },

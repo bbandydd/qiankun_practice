@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 
-const childUrl = 'http://localhost:8081';
+const childUrl = 'http://localhost:8082';
 
 const Main = () => {
   const [targetWindow, setTargetWindow] = useState();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
 
-const parentUrl = 'http://localhost:8080';
+const parentUrl = 'http://localhost:8081';
 
 const Main = () => {
   const [parentData, setParentData] = useState({});

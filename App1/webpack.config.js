@@ -84,5 +84,6 @@ module.exports = {
     compress: true,
     port: 8081,
     headers: { 'Access-Control-Allow-Origin': '*' },
+    historyApiFallback: true
   },
 };
