@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
+import * as Style from './Style';
+
 const Main = () => {
   const [targetWindow, setTargetWindow] = useState();
   const [childData, setChildData] = useState({});
@@ -59,7 +61,7 @@ const Main = () => {
       <p>App1</p>
       <p>Data from App2</p>
       <p>{JSON.stringify(childData)}</p>
-      <button onClick={handleEvaluate}>Calculate</button>
+      <Style.Button onClick={handleEvaluate}>Calculate</Style.Button>
     </div>
   );
 };
