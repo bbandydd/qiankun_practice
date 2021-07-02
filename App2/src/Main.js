@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
+import action from './action';
 
 let parentUrl = 'http://localhost:8081';
 
@@ -9,6 +10,7 @@ if(window.__POWERED_BY_QIANKUN__){
 
 const Main = () => {
   const [parentData, setParentData] = useState({});
+  const [count, setCount] = useState(1);
 
   const handleCalculate = () => {
     if (window.opener) {
@@ -35,6 +37,18 @@ const Main = () => {
     }
   };
 
+  const handleClick = () => {
+    action.setGlobalState({ count: count + 1 });
+    setCount(count + 1);
+  };
+
+  useEffect(() => {
+    action.onGlobalStateChange((newState, prev) => {
+      console.log('App2', JSON.stringify(newState), JSON.stringify(prev));
+      setCount(newState.count);
+    }, true);
+  }, []);
+
   useEffect(() => {
     getInitialData();
 
@@ -51,6 +65,7 @@ const Main = () => {
       <p>Data from App1</p>
       <p>{JSON.stringify(parentData)}</p>
       <button onClick={handleCalculate}>get Data</button>
+      <div><button onClick={handleClick}>App2 set count</button> Global Count: {count}</div>
     </div>
   );
 };

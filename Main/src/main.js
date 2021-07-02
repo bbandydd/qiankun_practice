@@ -1,15 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
+import store from './store';
 import microApps from './micro-app';
 import * as Style from './Style';
 
 const Main = () => {
   const [current, setCurrent] = useState('/app1');
+  const [count, setCount] = useState(1);
 
   const goto = (item) => {
     history.pushState(null, item.activeRule, item.activeRule);
     setCurrent(item.activeRule);
   }
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  useEffect(() => {
+    store.onGlobalStateChange((newState, prev) => {
+      console.log('Main', JSON.stringify(newState), JSON.stringify(prev));
+      setCount(newState.count);
+    }, true);
+  }, []);
+
+  useEffect(() => {
+    store.setGlobalState({
+      count,
+    });
+  }, [count])
 
   return (
     <Style.Container>
@@ -25,6 +44,7 @@ const Main = () => {
           }
         </Style.SubApps>
       </Style.Header>
+      <div><button onClick={handleClick}>Global set count</button> Global Count: {count}</div>
       <div id="subapp-viewport"></div>
     </Style.Container>
   );
