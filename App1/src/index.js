@@ -1,14 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 import action from './action';
 import Main from './Main';
+import About from './About';
 
 const doRender = (props) => {
   if (props) {
     action.setActions(props);
   }
 
-  ReactDOM.render(<Main />, document.getElementById('app'));
+  ReactDOM.render(
+    <Router basename={window.__POWERED_BY_QIANKUN__ ? '/app1' : '/'}>
+      <div>
+        <ul>
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+          <Route path="/home">
+            <Main />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  , document.getElementById('app'));
 };
 
 if(!window.__POWERED_BY_QIANKUN__){
