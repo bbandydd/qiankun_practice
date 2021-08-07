@@ -50,7 +50,7 @@ const Main = () => {
     }
   };
 
-  const handleClick = () => {
+  const handleClickCount = () => {
     action.setGlobalState({ count: count + 1 });
     setCount(count + 1);
   };
@@ -76,7 +76,7 @@ const Main = () => {
       <p>Data from App2</p>
       <p>{JSON.stringify(childData)}</p>
       <Style.Button onClick={handleEvaluate}>Calculate</Style.Button>
-      <div><button onClick={handleClick}>App1 set count</button> Global Count: {count}</div>
+      <div><button onClick={handleClickCount}>App1 set count</button> Global Count: {count}</div>
     </div>
   );
 };

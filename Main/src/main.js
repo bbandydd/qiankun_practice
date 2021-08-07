@@ -13,7 +13,7 @@ const Main = () => {
     setCurrent(item.activeRule);
   }
 
-  const handleClick = () => {
+  const handleClickCount = () => {
     setCount(count + 1);
   };
 
@@ -44,7 +44,9 @@ const Main = () => {
           }
         </Style.SubApps>
       </Style.Header>
-      <div><button onClick={handleClick}>Global set count</button> Global Count: {count}</div>
+      <Style.TestArea>
+        <Style.TestBox><button onClick={handleClickCount}>Global set count</button> Global Count: {count}</Style.TestBox>
+      </Style.TestArea>
       <div id="subapp-viewport"></div>
     </Style.Container>
   );

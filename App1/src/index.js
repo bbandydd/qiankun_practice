@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  BrowserRouter as Router,
+  // BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link,
@@ -17,7 +18,8 @@ const doRender = (props) => {
   }
 
   ReactDOM.render(
-    <Router basename={window.__POWERED_BY_QIANKUN__ ? '/app1' : '/'}>
+    // <Router basename={window.__POWERED_BY_QIANKUN__ ? '/app1' : '/'}>
+    <Router>
       <div>
         <ul>
           <li>
