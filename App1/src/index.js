@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  // BrowserRouter as Router,
-  HashRouter as Router,
+  BrowserRouter,
+  HashRouter,
   Switch,
   Route,
   Link,
@@ -13,6 +13,8 @@ import Main from './Main';
 import About from './About';
 
 const doRender = (props) => {
+  const Router = window.__POWERED_BY_QIANKUN__ ? HashRouter : BrowserRouter;
+
   if (props) {
     action.setActions(props);
   }
