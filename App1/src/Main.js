@@ -63,7 +63,9 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener('message', receiveMessage);
+    if (targetWindow) {
+      window.addEventListener('message', receiveMessage);
+    }
 
     return () => {
       window.removeEventListener('message', receiveMessage);
@@ -77,6 +79,7 @@ const Main = () => {
       <p>{JSON.stringify(childData)}</p>
       <Style.Button onClick={handleEvaluate}>Calculate</Style.Button>
       <div><button onClick={handleClickCount}>App1 set count</button> Global Count: {count}</div>
+      Token: {localStorage.qiankun_token}
     </div>
   );
 };
