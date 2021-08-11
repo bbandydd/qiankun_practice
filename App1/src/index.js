@@ -8,6 +8,7 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
+import AppContextProvider from './store';
 import action from './action';
 import Main from './Main';
 import About from './About';
@@ -22,28 +23,30 @@ const doRender = (props) => {
   ReactDOM.render(
     // <Router basename={window.__POWERED_BY_QIANKUN__ ? '/app1' : '/'}>
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/home">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
+      <AppContextProvider>
+        <div>
+          <ul>
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+          </ul>
 
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-          <Route path="/home">
-            <Main />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-        </Switch>
-      </div>
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/home" />
+            </Route>
+            <Route path="/home">
+              <Main />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+          </Switch>
+        </div>
+      </AppContextProvider>
     </Router>
   , document.getElementById('app'));
 };

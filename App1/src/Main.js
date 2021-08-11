@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { hot } from 'react-hot-loader/root';
-import action from './action';
+import { AppContext } from './store';
 import * as Style from './Style';
 
 const Main = () => {
   const [targetWindow, setTargetWindow] = useState();
   const [childData, setChildData] = useState({});
-  const [count, setCount] = useState(1);
+  const appStore = useContext(AppContext);
+  const { count, handleClickCount } = appStore;
 
   const handleEvaluate = () => {
     let childUrl = 'http://localhost:8082';
@@ -49,18 +50,6 @@ const Main = () => {
       }
     }
   };
-
-  const handleClickCount = () => {
-    action.setGlobalState({ count: count + 1 });
-    setCount(count + 1);
-  };
-
-  useEffect(() => {
-    action.onGlobalStateChange((newState, prev) => {
-      console.log('App1', JSON.stringify(newState), JSON.stringify(prev));
-      setCount(newState.count);
-    }, true);
-  }, []);
 
   useEffect(() => {
     if (targetWindow) {
