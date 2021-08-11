@@ -66,6 +66,7 @@ const Main = () => {
       <p>{JSON.stringify(parentData)}</p>
       <button onClick={handleCalculate}>get Data</button>
       <div><button onClick={handleClick}>App2 set count</button> Global Count: {count}</div>
+      Token: {localStorage.qiankun_token}
     </div>
   );
 };

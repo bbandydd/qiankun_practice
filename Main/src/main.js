@@ -52,7 +52,7 @@ const Main = () => {
       </Style.Header>
       <Style.TestArea>
         <Style.TestBox><button onClick={handleClickCount}>Global set count</button> Global Count: {count}</Style.TestBox>
-        <Style.TestBox><button onClick={handleClickToken}>Global set token</button> Token: {localStorage.qiankun_token}</Style.TestBox>
+        <Style.TestBox><button onClick={handleClickToken}>localStorate token</button> Token: {localStorage.qiankun_token}</Style.TestBox>
       </Style.TestArea>
       <div id="subapp-viewport"></div>
     </Style.Container>
