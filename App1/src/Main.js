@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { useTranslation } from "react-i18next";
-import { AppContext } from './store';
+import { AppContext } from '../../Shared/store';
 import * as Style from './Style';
 
 const Main = () => {

@@ -9,8 +9,8 @@ import {
   Redirect
 } from "react-router-dom";
 import { I18nextProvider } from 'react-i18next';
-import AppContextProvider from './store';
-import action from './action';
+import AppContextProvider from '../../Shared/store';
+import action from '../../Shared/action';
 import Main from './Main';
 import About from './About';
 import i18n from './locale/i18n';

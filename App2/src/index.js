@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import action from './action';
+import { I18nextProvider } from 'react-i18next';
+import action from '../../Shared/action';
+import AppContextProvider from '../../Shared/store';
 import Main from './Main';
+import i18n from './locale/i18n';
 
 const doRender = (props) => {
   if (props) {
     action.setActions(props);
   }
-  ReactDOM.render(<Main />, document.getElementById('app'));
+  ReactDOM.render(
+    <I18nextProvider i18n={i18n}>
+      <AppContextProvider>
+        <Main />
+      </AppContextProvider>
+    </I18nextProvider>
+  , document.getElementById('app'));
 };
 
 if(!window.__POWERED_BY_QIANKUN__){

@@ -17,8 +17,10 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
+    "i18next": "^20.4.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-i18next": "^11.11.4"
   },
   "devDependencies": {
     "@babel/core": "7.9.0",

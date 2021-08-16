@@ -13,7 +13,7 @@ const AppContextProvider = ({ children }) => {
 
   useEffect(() => {
     action.onGlobalStateChange((newState, prev) => {
-      console.log('App1', JSON.stringify(newState), JSON.stringify(prev));
+      console.log('App', JSON.stringify(newState), JSON.stringify(prev));
       setCount(newState.count);
       loadLocales(newState.locale);
     }, true);
