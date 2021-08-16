@@ -8,10 +8,12 @@ import {
   Link,
   Redirect
 } from "react-router-dom";
+import { I18nextProvider } from 'react-i18next';
 import AppContextProvider from './store';
 import action from './action';
 import Main from './Main';
 import About from './About';
+import i18n from './locale/i18n';
 
 const doRender = (props) => {
   const Router = window.__POWERED_BY_QIANKUN__ ? HashRouter : BrowserRouter;
@@ -23,30 +25,32 @@ const doRender = (props) => {
   ReactDOM.render(
     // <Router basename={window.__POWERED_BY_QIANKUN__ ? '/app1' : '/'}>
     <Router>
-      <AppContextProvider>
-        <div>
-          <ul>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-          </ul>
+      <I18nextProvider i18n={i18n}>
+        <AppContextProvider>
+          <div>
+            <ul>
+              <li>
+                <Link to="/home">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+            </ul>
 
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/home" />
-            </Route>
-            <Route path="/home">
-              <Main />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-          </Switch>
-        </div>
-      </AppContextProvider>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/home" />
+              </Route>
+              <Route path="/home">
+                <Main />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+            </Switch>
+          </div>
+        </AppContextProvider>
+      </I18nextProvider>
     </Router>
   , document.getElementById('app'));
 };

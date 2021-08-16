@@ -5,3 +5,7 @@ export const Button = styled.button`
   height: 30px;
   background: pink;
 `;
+
+export const Select = styled.select`
+  margin-right: 10px;
+`;

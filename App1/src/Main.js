@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { hot } from 'react-hot-loader/root';
+import { useTranslation } from "react-i18next";
 import { AppContext } from './store';
 import * as Style from './Style';
 
@@ -7,7 +8,8 @@ const Main = () => {
   const [targetWindow, setTargetWindow] = useState();
   const [childData, setChildData] = useState({});
   const appStore = useContext(AppContext);
-  const { count, handleClickCount } = appStore;
+  const { count, handleClickCount, locale, loadLocales } = appStore;
+  const { t } = useTranslation();
 
   const handleEvaluate = () => {
     let childUrl = 'http://localhost:8082';
@@ -68,7 +70,14 @@ const Main = () => {
       <p>{JSON.stringify(childData)}</p>
       <Style.Button onClick={handleEvaluate}>Calculate</Style.Button>
       <div><button onClick={handleClickCount}>App1 set count</button> Global Count: {count}</div>
-      Token: {localStorage.qiankun_token}
+      <div>Token: {localStorage.qiankun_token}</div>
+      <div>
+        <Style.Select value={locale} onChange={(e) => loadLocales(e.target.value)}>
+          <option value="en-US">en-US</option>
+          <option value="zh-TW">zh-TW</option>
+        </Style.Select>
+        {t('LANGUAGE')}
+      </div>
     </div>
   );
 };
