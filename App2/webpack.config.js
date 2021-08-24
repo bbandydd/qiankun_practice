@@ -81,9 +81,15 @@ module.exports = {
     })
   ],
   devServer: {
+    https: true,
     compress: true,
     port: 8082,
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: {
+      "Access-Control-Allow-Origin": "https://localhost:8080",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization",
+      "Access-Control-Allow-Credentials": true,
+    },
     historyApiFallback: true
   },
 };

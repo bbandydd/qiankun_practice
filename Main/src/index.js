@@ -25,7 +25,14 @@ registerMicroApps(microApps, {
   ]
 });
 setDefaultMountApp('/app1');
-start();
+start({
+  fetch: (url) => {
+    return fetch(url, {
+      credentials: 'include',
+      mode: 'cors'
+    })
+  }
+});
 
 render(<Main />, document.getElementById('root'));
 

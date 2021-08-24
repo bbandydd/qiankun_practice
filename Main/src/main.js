@@ -34,6 +34,8 @@ const Main = () => {
       console.log('Main', JSON.stringify(newState), JSON.stringify(prev));
       setCount(newState.count);
     }, true);
+
+    localStorage.qiankun_medcn_url = 'https://localhost:3000/api';
   }, []);
 
   useEffect(() => {

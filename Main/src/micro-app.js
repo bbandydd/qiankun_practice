@@ -10,6 +10,11 @@ const microApps = [
     name: 'app2',
     entry: '//localhost:8082',
     activeRule: '/app2'
+  },
+  {
+    name: 'medcn',
+    entry: '//localhost:9487',
+    activeRule: '/medcn'
   }
 ]
 
