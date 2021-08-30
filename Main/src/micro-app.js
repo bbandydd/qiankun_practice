@@ -14,7 +14,7 @@ const microApps = [
   {
     name: 'medcn',
     entry: '//localhost:9487',
-    activeRule: '/medcn#/backdoor',
+    activeRule: '/medcn',
   }
 ]
 
