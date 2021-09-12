@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader/root';
-import store from './store';
+import { loadMicroApp } from 'qiankun';
 import microApps from './micro-app';
+import store from './store';
 import * as Style from './Style';
 
 const Main = () => {
   const [current, setCurrent] = useState('/app1');
   const [count, setCount] = useState(1);
+  const [microApp, setMicroApp] = useState();
 
   const goto = (item) => {
     history.pushState(null, item.activeRule, item.activeRule);
@@ -30,19 +32,33 @@ const Main = () => {
   };
 
   useEffect(() => {
+    const app = loadMicroApp(microApps[0]);
+    setMicroApp(app);
+
     store.onGlobalStateChange((newState, prev) => {
       console.log('Main', JSON.stringify(newState), JSON.stringify(prev));
       setCount(newState.count);
     }, true);
 
     localStorage.qiankun_medcn_url = 'https://localhost:3000/api';
+
+    return () => microApp.unmount();
   }, []);
 
   useEffect(() => {
     store.setGlobalState({
       count,
     });
-  }, [count])
+  }, [count]);
+
+  useEffect(() => {
+    const matchRoute = microApps.find((o) => o.activeRule === current);
+
+    if (matchRoute) {
+      const app = loadMicroApp(matchRoute);
+      setMicroApp(app);
+    }
+  }, [current]);
 
   return (
     <Style.Container>
